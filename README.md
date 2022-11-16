@@ -1,4 +1,4 @@
-# bloc_cubit
+## Reactive Programming? || Bloc ? || Cubit?
 
 # Reactive Programming?
 - Bizler prosedürel programlama dillerinde kodlarımızı yazar ve ilgili programlamayı yaparız.
