@@ -1,4 +1,4 @@
-## Counter Cubit 
+## [Counter Cubit](https://github.com/TarkanKara/Bloc_Cubit/blob/master/lib/cubit_1_counter/counter_cubit.dart) 
 
 - Cubit dediğimiz gibi block mekinazmasının sadeleştirilmiş ve basitleştirilmiş hali olarak geçiyor.
 - Kullanım Mekanizması;
@@ -57,7 +57,61 @@ class CounterCubit extends Cubit <int> {
     void decrement () => emit(state -1);
 }
 ```
-12. Cubit mekanizması artık hazır. **BlockProvider** Widgetı ile uygulmanın her yerine aynı instate kullanabileceğiz. 
+12. Cubit mekanizması artık hazır. **[BlockProvider](https://github.com/TarkanKara/Bloc_Cubit/blob/master/lib/cubit_1_counter/cubit_page.dart)** Widgetı ile uygulmanın her yerine aynı instate kullanabileceğiz. 
+```dart
+class _Cubit1PageExampleState extends State<Cubit1PageExample> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<CounterCubit>(
+      create: (context) => CounterCubit(),
+      child: const Cubit1PageView(),
+    );
+  }
+}
+```
+**BlocProvider** Widgetını kullanarak uygulamaya kullanıldığı yerden itibaren **CounterCubit instate** verecektir. Bu widgetı kullanmak için *flutter_bloc* paketini import etmemiz gerekecek. Şimdi bizlere bu *instate* verebilmesi için **create:** parametresine ilgili sınıftan bir örnek tanımlamamız lazım;
+```dart
+return BlocProvider<CounterCubit>(
+      create: (context) => CounterCubit());
+```
+**BlocProvider** kullanıldığı yerden itibaren uygulama içerisinde kullanılabicek bir **CounterCubit instate** var.
+13. Şimdi Text Widgetın içerisinde *CounterCubit classından* bir değer gösterelim. Şimdi bu noktada değişikliği ele almak istediğimiz yapıyı yeni bir widget ile sarmalamaız gerekecek. Bu widgetın adı **BlocBuilder**
+14. **BlocBuilder** ile ele aldığımız Cubit veya Block yapısı üzerinden **değişen stateleri** kolaylıkla görüntüleyebilceğiz.
+15. **BlocBuilder** yapısı generik olarak bizlerden hangi yapıyı kullanacaksam onu isteyecektir.(CounterCubit classı) ve aynı zamanda bu yapının üreteği state i isteyecektir.(CounterCubit classı int bir state üretiyordu)
+```dart
+ body: BlocBuilder<CounterCubit, int>(
+        builder: (context, appstate) {
+          return Center(
+            child: Center(
+                child: Text(appstate.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3!
+                        .copyWith(fontSize: 35))),
+          );
+        },
+      ),
+```
+**builder** parametreside **context** ve **güncel state mi içerecek bir callback** ten başka bişey değil. Güncel state i tutan callback ismini **appstate** verdim. Artık Text Widgetı içerisinde callback çağırma işlemi yapabiliriz. String e çevirmemizin sebeti CounterCubit classın içerisndeki statin int veri tipinde olması ve bu yüzden callback imiz olan appstate int veri tipine sahip olacaktır.
+```dart
+Text(appstate.toString())                  
+```
+16. Uygulama ilk çalıştırıldığında CounterCubit classına verdiğimiz **initialState** sıfır olduğu için Text widgetı sıfır ifadesini gösterecektir.
+:bangbang: :bangbang:
+```dart
+NOT : CounterCubit classın içerisindeki metotlar initialState i emit edecektir. BlocBuilder ile bu yayılan emmit işlemlerini aktif olarak dinliyoruz.
+BlockBuilder temelde aslında StreamBuilder gibi çalışıyor.                  
+```
+17. [Buttonlara tıklanma durumlarına bakalım](https://github.com/TarkanKara/Bloc_Cubit/blob/master/lib/cubit_1_counter/cubit_page.dart)
+```dart
+TextButton(
+    onPressed: () {
+        context.read<CounterCubit>().increment();
+        },
+        child: const Text("Inc", style: TextStyle(fontSize: 20))),                
+```
+
+
 
 
 
