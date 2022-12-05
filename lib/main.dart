@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'cubit_examples/cubit_1.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
       title: 'Bloc && Cubit',
-      //home:
+      home: const Cubit1PageExample(),
     );
   }
 }
