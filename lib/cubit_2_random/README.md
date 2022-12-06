@@ -82,9 +82,9 @@ class NamesCubit extends Cubit<String ?>{
     );
   }
 ```
-14. **BlocBuilder()** bir kaç parametre alıyor. Bunların kullanımına bakalım. **builder:** Var olan değişikleri kullanıcıya göstereceğimiz geriye bir widget dönen fonksiyon bir callback ifade aslında, **block:** Uygulama içerisindeki block instance verilebilir. **buildWhen:** builder callback in hangi durumlarda tetikleneceğini daha doğrusu state değişiminin hangi durumlarda ele alınacağını ifade eden bir parametre geriye true ve false değer döndürür. Örneğin; Uygulamam içerisindeki statusum initial dan Lodinge geçerse veya Loding den succes e geçerse o zaman widget tree mi güncele gibi
+14. **BlocBuilder()** bir kaç parametre alıyor. Bunların kullanımına bakalım. **builder:** Var olan değişikleri kullanıcıya göstereceğimiz geriye bir widget dönen fonksiyon bir callback ifade aslında, **block:** Uygulama içerisindeki block instance verilebilir. **buildWhen:** builder callback in hangi durumlarda tetikleneceğini daha doğrusu state değişiminin hangi durumlarda ele alınacağını ifade eden bir parametre geriye true ve false değer döndürür. Örneğin; Uygulamam içerisindeki status un initial dan Lodinge geçerse veya Loding den succes e geçerse o zaman widget tree mi güncele gibi
 
-15. **[BlocBuilder](https://github.com/TarkanKara/Bloc_Cubit/blob/master/lib/cubit_2_random/random_cubit.dart)** Kullanımı; Uygulamanın arayüzünde buttona her tıklandığında rastagele isimleri getirecek şekilde widgetlarımı oluşturuyoruz.
+15. **[BlocBuilder](https://github.com/TarkanKara/Bloc_Cubit/blob/master/lib/cubit_2_random/cubit_page.dart)** Kullanımı; Uygulamanın arayüzünde buttona her tıklandığında rastagele isimleri getirecek şekilde widgetlarımızı oluşturuyoruz.
 ```dart
 BlocBuilder<NamesCubit, String?>(
         builder: (context, String? nameState) {
@@ -99,4 +99,9 @@ BlocBuilder<NamesCubit, String?>(
 16. Cubit mekanizması gördüğümüz gibi aslında kendi içerisinde tanımlamış olduğumuz metotların tetiklenmesiyle yeni bir durum yani state üretmekte ve emit metodu her defasında ui için yeni bir state döndürüyor. State değişimi ile ui güncelliyoruz.
 
 :bangbang::bangbang:
-17. Block ve Cubit mekanizmasının çalışma prensibi her yeni event geldiğinde farklı yeni bir state oluşturarak kullanıcıya, akışa bunu dahil etmek. Dolasıyla ilgili ui ın güncellemesini sağlamak 
+
+17. **Block ve Cubit mekanizmasının çalışma prensibi her yeni event geldiğinde farklı yeni bir state oluşturarak kullanıcıya, akışa bunu dahil etmek. Dolasıyla ilgili ui ın güncellemesini sağlamak** 
+
+| Page  |
+| ------------ |
+|  ![RandomCubit](https://user-images.githubusercontent.com/59411109/206017187-8fdfd9e3-1714-43fd-a577-9fa603acbd9c.gif) |
