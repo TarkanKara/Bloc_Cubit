@@ -1,6 +1,5 @@
+import 'package:bloc_cubit/cubit_2_random/cubit_page.dart';
 import 'package:flutter/material.dart';
-
-import 'cubit_1_counter/cubit_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,13 +21,15 @@ class MyApp extends StatelessWidget {
           caption: TextStyle(
               fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1),
         ),
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(backgroundColor: Colors.amber)),
         primarySwatch: Colors.purple,
         colorScheme: Theme.of(context)
             .colorScheme
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
       title: 'Bloc && Cubit',
-      home: const Cubit1PageExample(),
+      home: const Cubit2PageExample(),
     );
   }
 }
