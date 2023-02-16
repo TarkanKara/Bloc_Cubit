@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(),
       theme: ThemeData(
         textTheme: const TextTheme(
-          headline5: TextStyle(
+          bodyMedium: TextStyle(
             fontSize: 16,
             color: Colors.black54,
             fontWeight: FontWeight.w500,
           ),
-          caption: TextStyle(
+          bodySmall: TextStyle(
               fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1),
         ),
         textButtonTheme: TextButtonThemeData(
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
       title: 'Bloc && Cubit',
-      home:  LoginView(),
+      home: LoginView(),
     );
   }
 }
