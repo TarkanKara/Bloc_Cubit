@@ -37,7 +37,7 @@ class Cubit1PageView extends StatelessWidget {
                 child: Text(appstate.toString(),
                     style: Theme.of(context)
                         .textTheme
-                        .headline3!
+                        .bodyMedium!
                         .copyWith(fontSize: 35))),
           );
         },

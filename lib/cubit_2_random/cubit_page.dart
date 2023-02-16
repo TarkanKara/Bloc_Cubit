@@ -37,7 +37,7 @@ class Cubit2View extends StatelessWidget {
                 child: Text("Fetch User",
                     style: Theme.of(context)
                         .textTheme
-                        .headline3!
+                        .bodyMedium!
                         .copyWith(fontSize: 20))),
           );
           if (nameState != null) {
@@ -48,7 +48,7 @@ class Cubit2View extends StatelessWidget {
                   Text(nameState,
                       style: Theme.of(context)
                           .textTheme
-                          .headline3!
+                          .displaySmall!
                           .copyWith(fontSize: 40)),
                   const SizedBox(height: 20),
                   textButton
