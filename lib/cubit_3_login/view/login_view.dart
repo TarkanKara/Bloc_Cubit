@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc_cubit/cubit_3_login/service/login_service.dart';
+import 'package:bloc_cubit/cubit_3_login/view/login_detail_view.dart';
 import 'package:bloc_cubit/cubit_3_login/viewmodel/login_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,11 @@ class LoginView extends StatelessWidget {
               service: LoginService(Dio(BaseOptions(baseUrl: baseUrl))),
             ),
         child: BlocConsumer<LoginCubit, LoginState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if (state is LoginCompletedState) {
+                state.navigate(context);
+              }
+            },
             builder: (context, state) => buildScaffold(context, state)));
   }
 
@@ -43,23 +48,37 @@ class LoginView extends StatelessWidget {
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               buildTextFormFieldPassword(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-              ElevatedButton(
-                onPressed: context.watch<LoginCubit>().isLoading
-                    ? null
-                    : () {
-                        context.read<LoginCubit>().postUserModel();
-                      },
-                child: context.read<LoginCubit>().isLoading
-                    ? const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircularProgressIndicator(color: Colors.orange),
-                      )
-                    : const Text("Save"),
-              ),
+              buildElevatedButton(context),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget buildElevatedButton(BuildContext context) {
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        if (state is LoginCompletedState) {
+          return const Card(
+            child: Icon(Icons.add),
+          );
+        }
+        return ElevatedButton(
+          onPressed: context.watch<LoginCubit>().isLoading
+              ? null
+              : () {
+                  context.read<LoginCubit>().postUserModel();
+                },
+          child: context.read<LoginCubit>().isLoading
+              ? const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: CircularProgressIndicator(color: Colors.orange),
+                )
+              : const Text("Save"),
+        );
+      },
     );
   }
 
@@ -99,6 +118,16 @@ class LoginView extends StatelessWidget {
       validator: (value) => (value ?? "").length > 5 ? null : "5 ten küçük",
       decoration: const InputDecoration(
           border: OutlineInputBorder(), labelText: "Email"),
+    );
+  }
+}
+
+extension LoginComplatedExtesion on LoginCompletedState {
+  void navigate(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => LoginDetailView(model: model),
+      ),
     );
   }
 }
