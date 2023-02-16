@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
   Scaffold buildScaffold(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("LoginView"),
+        title: const Text("LoginView"),   
         centerTitle: true,
       ),
       body: Form(
