@@ -16,9 +16,9 @@ enum ILoginServicePath { LOGIN }
 
 extension ILoginServiceExtension on ILoginServicePath {
   String get rawValue {
-    switch (this) {   
+    switch (this) {
       case ILoginServicePath.LOGIN:
-        return "login";
+        return "/login";
     }
   }
 }

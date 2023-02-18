@@ -11,7 +11,7 @@ class LoginView extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final String baseUrl = "https://reqres.in/api/";
+  final String baseUrl = "https://reqres.in/api";
 
   LoginView({super.key});
 
