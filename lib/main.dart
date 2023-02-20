@@ -1,4 +1,5 @@
 import 'package:bloc_cubit/cubit_3_login/view/login_view.dart';
+import 'package:bloc_cubit/cubit_4_user_list/view/user_list.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
       title: 'Bloc && Cubit',
-      home: LoginView(),
+      home: const UserList(),
     );
   }
 }
