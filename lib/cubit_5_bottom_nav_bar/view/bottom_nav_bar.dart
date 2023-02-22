@@ -1,6 +1,3 @@
-import 'package:bloc_cubit/cubit_5_bottom_nav_bar/widget/page_1_view.dart';
-import 'package:bloc_cubit/cubit_5_bottom_nav_bar/widget/page_2_view.dart';
-import 'package:bloc_cubit/cubit_5_bottom_nav_bar/widget/page_3_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,21 +23,16 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  final pageNavigation = [
-    const Page1View(),
-    const Page2View(),
-    const Page3View(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BattomNavBarCubit, int>(
       builder: (context, state) {
         return Scaffold(
-          body: pageNavigation.elementAt(state),
+          body: context.read<BattomNavBarCubit>().pageNavigation[state],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: context.read<BattomNavBarCubit>().state,
-            onTap: changeBottomNav,
+            onTap: (value) =>
+                context.read<BattomNavBarCubit>().updateIndex(value),
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
@@ -52,9 +44,5 @@ class _BottomNavBarState extends State<BottomNavBar> {
         );
       },
     );
-  }
-
-  void changeBottomNav(int index) {
-    context.read<BattomNavBarCubit>().updateIndex(index);
   }
 }
