@@ -2,62 +2,46 @@ import 'package:bloc_cubit/cubit_6_cagdas_vbt/feature/viewModel/cubit/post_cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../product/widget/post_list_view.dart';
+import '../../product/widget/user_list_view.dart';
+
 class PostView extends StatelessWidget {
   const PostView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(centerTitle: true, title: const Text("Cubit Example")),
       body: BlocProvider<PostCubit>(
         create: (context) => PostCubit(),
-        child: Column(
-          children: [
-            Expanded(
-              child: BlocConsumer<PostCubit, PostState>(
-                listener: (context, state) {},
-                builder: (context, state) => context.read<PostCubit>().isLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(
-                              child: ListTile(
-                                leading: Text(
-                                  context
-                                          .read<PostCubit>()
-                                          .posDatas?[index]
-                                          .id
-                                          .toString() ??
-                                      "",
-                                ),
-                                title: Text(
-                                  context
-                                          .read<PostCubit>()
-                                          .posDatas?[index]
-                                          .title
-                                          .toString() ??
-                                      "",
-                                ),
-                                subtitle: Text(
-                                  context
-                                          .read<PostCubit>()
-                                          .posDatas?[index]
-                                          .body
-                                          .toString() ??
-                                      "",
-                                ),
+        child: BlocConsumer<PostCubit, PostState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return context.read<PostCubit>().isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Column(
+                    children: [
+                      Expanded(
+                        child: context.read<PostCubit>().isUsers
+                            ? CustomUserListView(
+                                itemCount:
+                                    context.read<PostCubit>().userDatas!.length,
+                                userText: context.read<PostCubit>().userDatas,
+                              )
+                            : CustomPostListView(
+                                itemCount:
+                                    context.read<PostCubit>().posDatas!.length,
+                                postText: context.read<PostCubit>().posDatas,
                               ),
-                            ),
-                          );
-                        },
                       ),
-              ),
-            )
-          ],
+                      ElevatedButton(
+                          onPressed: () {
+                            context.read<PostCubit>().userService();
+                          },
+                          child: const Text("Is Users"))
+                    ],
+                  );
+          },
         ),
       ),
     );

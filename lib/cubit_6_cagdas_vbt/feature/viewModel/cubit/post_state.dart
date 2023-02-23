@@ -12,3 +12,7 @@ class PostInitial extends PostState {}
 class PostLoading extends PostState {}
 
 class PostService extends PostState {}
+
+class UserService extends PostState {}
+
+class IsUserService extends PostState {}
