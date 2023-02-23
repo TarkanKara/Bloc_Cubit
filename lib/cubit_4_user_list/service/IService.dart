@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, file_names
 
 import 'package:bloc_cubit/cubit_4_user_list/core/extension/network_path.dart';
 import 'package:dio/dio.dart';

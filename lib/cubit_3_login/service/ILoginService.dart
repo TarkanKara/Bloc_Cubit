@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, file_names
+
 import 'package:bloc_cubit/cubit_3_login/model/login_request_model.dart';
 import 'package:bloc_cubit/cubit_3_login/model/login_response.dart';
 import 'package:dio/dio.dart';
