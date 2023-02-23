@@ -1,5 +1,6 @@
-import 'package:bloc_cubit/cubit_5_bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+
+import 'cubit_6_cagdas_vbt/feature/view/post_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
       title: 'Bloc && Cubit',
-      home: const NavBar(),
+      home: const PostView(),
     );
   }
 }
