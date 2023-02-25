@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             .colorScheme
             .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
       ),
-      title: 'Bloc && Cubit',
+      title: 'Bloc && Cubitt',
       home: const PostView(),
     );
   }
