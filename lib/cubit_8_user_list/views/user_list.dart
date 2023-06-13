@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../extension/app_extension.dart';
+import '../core/extension/app_extension.dart';
 import '../viewModels/bloc/user_bloc.dart';
 import '../widgets/fetch_user_button.dart';
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:http/http.dart' as http;
 
-import '../extension/app_extension.dart';
+import '../core/extension/app_extension.dart';
 import '../model/users_model.dart';
 
 typedef MyHttpClient = http.Client;

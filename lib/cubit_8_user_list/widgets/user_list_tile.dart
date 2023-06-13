@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../extension/app_extension.dart';
+import '../core/extension/app_extension.dart';
 
 class UserListTile<T> extends StatelessWidget {
   final Iterable<T> users;

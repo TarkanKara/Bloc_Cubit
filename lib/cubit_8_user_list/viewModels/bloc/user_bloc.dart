@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
-import '../../extension/app_extension.dart';
+import '../../core/extension/app_extension.dart';
 import '../../model/users_model.dart';
 
 part 'user_event.dart';
